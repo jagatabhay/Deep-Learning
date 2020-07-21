@@ -70,7 +70,7 @@ def load_images_with_resize(image_files):
 
 # Input images
 for file in os.listdir('own/'):
-    inputs = load_images_with_resize( glob.glob(f'own/{file}') )
+    inputs = load_images_with_resize( f'own/{file}' )
     print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
     
     # Compute results
