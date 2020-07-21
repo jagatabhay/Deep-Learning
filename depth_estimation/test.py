@@ -30,7 +30,7 @@ print('Loading model...')
 model = load_model(args.model, custom_objects=custom_objects, compile=False)
 
 print('\nModel loaded ({0}).'.format(args.model))
-
+'''
 def load_images_with_resize(image_files):
     loaded_images = []
     for file in image_files:
@@ -55,4 +55,35 @@ plt.imshow(viz)
 plt.savefig('results.png')
 
 end = time.time()
-print('It took: ', end - start)
+print('It took: ', end - start) '''
+
+def load_images_with_resize(image_files):
+    loaded_images = []
+    im = Image.open( image_files)
+    im = im.resize( (640, 480), PIL.Image.ANTIALIAS )
+    x = np.clip( np.asarray( im, dtype = float ) / 255, 0, 1 )
+    loaded_images.append(x)
+    return np.stack(loaded_images, axis=0)
+
+
+
+
+# Input images
+for file in os.listdir('own/'):
+    inputs = load_images_with_resize( glob.glob(f'own/{file}') )
+    print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
+    
+    # Compute results
+    outputs = predict(model, inputs)
+
+    # Display results
+    viz = display_images(outputs.copy())
+    plt.figure(figsize=(20,10))
+    #plt.imshow(viz)
+    #plt.show()
+    plt.savefig(f'/content/grdive/My Drive/fg_bg/{file}')
+
+
+
+end = time.time()
+print('It took: ', end - start
