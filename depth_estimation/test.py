@@ -77,11 +77,11 @@ for file in os.listdir('own/'):
     outputs = predict(model, inputs)
 
     # Display results
-    viz = display_images(outputs.copy())
+    viz = display_images(outputs.copy(),inputs.copy())
     plt.figure(figsize=(20,10))
     #plt.imshow(viz)
     #plt.show()
-    plt.savefig(f'/content/gdrive/My Drive/fg_bg/{file}')
+    plt.savefig(f'{file}')
 
 
 
