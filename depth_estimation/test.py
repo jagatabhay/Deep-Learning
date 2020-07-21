@@ -86,4 +86,4 @@ for file in os.listdir('own/'):
 
 
 end = time.time()
-print('It took: ', end - start
+print('It took: ', end - start)
