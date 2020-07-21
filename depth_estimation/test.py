@@ -78,10 +78,10 @@ for file in os.listdir('own/'):
 
     # Display results
     viz = display_images(outputs.copy(),inputs.copy())
-    fig = plt.figure(figsize=(20,10))
-    #plt.imshow(viz)
+    plt.figure(figsize=(20,10))
+    plt.imshow(viz)
     #plt.show()
-    fig.savefig(f'{file}')
+    plt.savefig(f'{file}')
 
 
 
