@@ -81,7 +81,7 @@ for file in os.listdir('own/'):
     plt.figure(figsize=(20,10))
     #plt.imshow(viz)
     #plt.show()
-    plt.savefig(f'/content/grdive/My Drive/fg_bg/{file}')
+    plt.savefig(f'/content/gdrive/My Drive/fg_bg/{file}')
 
 
 
