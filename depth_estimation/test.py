@@ -62,8 +62,8 @@ def load_images_with_resize(image_files):
     im = Image.open( image_files)
     im = im.resize( (640, 480), PIL.Image.ANTIALIAS )
     x = np.clip( np.asarray( im, dtype = float ) / 255, 0, 1 )
-    loaded_images.append(x)
-    return loaded_images
+    #loaded_images.append(x)
+    return x
 
 
 
