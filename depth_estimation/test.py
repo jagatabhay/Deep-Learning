@@ -81,7 +81,7 @@ for file in os.listdir('own/'):
     plt.figure(figsize=(20,10))
     plt.imshow(viz)
     #plt.show()
-    plt.savefig(f'{file}')
+    plt.savefig(f'outputsimg/{file}')
 
 
 
