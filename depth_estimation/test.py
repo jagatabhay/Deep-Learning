@@ -60,7 +60,7 @@ print('It took: ', end - start) '''
 def load_images_with_resize(image_files):
     loaded_images = []
     im = Image.open( image_files)
-    im = im.resize( (640, 480), PIL.Image.ANTIALIAS )
+    im = im.resize( (224, 224), PIL.Image.ANTIALIAS )
     x = np.clip( np.asarray( im, dtype = float ) / 255, 0, 1 )
     loaded_images.append(x)
     return np.stack(loaded_images, axis=0)
