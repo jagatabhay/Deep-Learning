@@ -48,7 +48,7 @@ print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[
 outputs = predict(model, inputs)
 
 # Display results
-viz = display_images(outputs.copy(), inputs.copy())
+viz = display_images(outputs.copy())
 plt.figure(figsize=(20,10))
 plt.imshow(viz)
 # plt.show()
@@ -77,8 +77,8 @@ for file in os.listdir('own/'):
     outputs = predict(model, inputs)
 
     # Display results
-    viz = display_images(outputs.copy(),inputs.copy())
-    plt.figure(figsize=(20,10))
+    viz = display_images(outputs.copy())
+    plt.figure(figsize=(10,10))
     plt.imshow(viz)
     #plt.show()
     plt.savefig(f'outputsimg/{file}')
