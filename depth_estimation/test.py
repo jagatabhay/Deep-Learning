@@ -78,7 +78,7 @@ for file in os.listdir('own/'):
 
     # Display results
     viz = display_images(outputs.copy())
-    plt.figure(figsize=(10,10))
+    #plt.figure(figsize=(10,10))
     plt.axis('off')
     plt.imshow(viz)
     #plt.show()
