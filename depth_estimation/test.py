@@ -82,7 +82,7 @@ for file in os.listdir('own/'):
     plt.axis('off')
     plt.imshow(viz)
     #plt.show()
-    plt.savefig(f'outputsimg/{file}')
+    plt.savefig(f'outputsimg/{file}', bbox_inches ='tight' , pad_inches = 0)
 
 
 
