@@ -67,11 +67,13 @@ def load_images_with_resize(image_files):
 
 
 
-
+i = 0
 # Input images
 for file in os.listdir('fg_bg1/'):
     inputs = load_images_with_resize( f'fg_bg1/{file}' )
-    print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
+    #print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
+    i = i+1
+    print('Image ',i)
     
     # Compute results
     outputs = predict(model, inputs)
