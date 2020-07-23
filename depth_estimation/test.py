@@ -85,6 +85,7 @@ for file in os.listdir('fg_bg1/'):
     plt.imshow(viz)
     #plt.show()
     plt.savefig(f'outputsimg/{file}', bbox_inches ='tight' , pad_inches = 0)
+    plt.close()
 
 
 
