@@ -60,7 +60,7 @@ print('It took: ', end - start) '''
 def load_images_with_resize(image_files):
     loaded_images = []
     im = Image.open( image_files)
-    im = im.resize( (224, 224), PIL.Image.ANTIALIAS )
+    im = im.resize( (640, 480), PIL.Image.ANTIALIAS )
     x = np.clip( np.asarray( im, dtype = float ) / 255, 0, 1 )
     loaded_images.append(x)
     return np.stack(loaded_images, axis=0)
@@ -69,8 +69,8 @@ def load_images_with_resize(image_files):
 
 i = 0
 # Input images
-for file in os.listdir('fg_bg1/'):
-    inputs = load_images_with_resize( f'fg_bg1/{file}' )
+for file in os.listdir('sample1/'):
+    inputs = load_images_with_resize( f'sample1/{file}' )
     #print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
     i = i+1
     print('Image ',i)
@@ -81,8 +81,10 @@ for file in os.listdir('fg_bg1/'):
     # Display results
     viz = display_images(outputs.copy())
     #plt.figure(figsize=(10,10))
+    img = Image.open(viz)
+    img.resize( (224,224), PIL.Image.ANTIALIAS )
     plt.axis('off')
-    plt.imshow(viz)
+    plt.imshow(img)
     #plt.show()
     plt.savefig(f'outputsimg/{file}', bbox_inches ='tight' , pad_inches = 0)
     plt.close()
