@@ -8,6 +8,8 @@ from augment import BasicPolicy
 
 def extract_zip(input_zip):
     input_zip=ZipFile(input_zip)
+    for file in input_zip.namelist():
+        print(f'Data : {file}')
     return {name: input_zip.read(name) for name in input_zip.namelist()}
 
 def nyu_resize(img, resolution=480, padding=6):
