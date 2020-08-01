@@ -17,7 +17,7 @@ from matplotlib import pyplot as plt
 # Argument Parser
 parser = argparse.ArgumentParser(description='High Quality Monocular Depth Estimation via Transfer Learning')
 parser.add_argument('--model', default='nyu.h5', type=str, help='Trained Keras model file.')
-parser.add_argument('--input', default='own/*.jpg', type=str, help='Input filename or folder.')
+parser.add_argument('--input', default='my_examples/*.jpg', type=str, help='Input filename or folder.')
 args = parser.parse_args()
 
 # Custom object needed for inference and training
@@ -30,7 +30,7 @@ print('Loading model...')
 model = load_model(args.model, custom_objects=custom_objects, compile=False)
 
 print('\nModel loaded ({0}).'.format(args.model))
-'''
+
 def load_images_with_resize(image_files):
     loaded_images = []
     for file in image_files:
@@ -48,48 +48,11 @@ print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[
 outputs = predict(model, inputs)
 
 # Display results
-viz = display_images(outputs.copy())
+viz = display_images(outputs.copy(), inputs.copy())
 plt.figure(figsize=(20,10))
 plt.imshow(viz)
 # plt.show()
 plt.savefig('results.png')
-
-end = time.time()
-print('It took: ', end - start) '''
-
-def load_images_with_resize(image_files):
-    loaded_images = []
-    im = Image.open( image_files)
-    im = im.resize( (640, 480), PIL.Image.ANTIALIAS )
-    x = np.clip( np.asarray( im, dtype = float ) / 255, 0, 1 )
-    loaded_images.append(x)
-    return np.stack(loaded_images, axis=0)
-
-
-
-i = 0
-# Input images
-for file in os.listdir('fg_bg43/'):
-    inputs = load_images_with_resize( f'fg_bg43/{file}' )
-    #print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
-    i = i+1
-    print('Image ',i)
-    
-    # Compute results
-    outputs = predict(model, inputs)
-
-    # Display results
-    viz = display_images(outputs.copy())
-    #plt.figure(figsize=(10,10))
-    #img = Image.open(viz)
-    #img.resize( (224,224), PIL.Image.ANTIALIAS )
-    plt.axis('off')
-    plt.imshow(viz)
-    #plt.show()
-    plt.savefig(f'outputsimg/{file}', bbox_inches ='tight' , pad_inches = 0)
-    plt.close()
-
-
 
 end = time.time()
 print('It took: ', end - start)
