@@ -33,6 +33,8 @@ def get_nyu_data(batch_size, nyu_data_zipfile='nyu_data.zip'):
         nyu2_train = nyu2_train[:10]
         nyu2_test = nyu2_test[:10]
 
+    print('Data.py Line36 ',shape_rgb)
+    print('Data.py Line37 ',shape_depth)
     return data, nyu2_train, nyu2_test, shape_rgb, shape_depth
 
 def get_nyu_train_test_data(batch_size):
