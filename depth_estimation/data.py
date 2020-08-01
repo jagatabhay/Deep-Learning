@@ -22,6 +22,8 @@ def get_nyu_data(batch_size, nyu_data_zipfile='nyu_data.zip'):
 
     nyu2_train = list((row.split(',') for row in (data['data/nyu2_train.csv']).decode("utf-8").split('\n') if len(row) > 0))
     nyu2_test = list((row.split(',') for row in (data['data/nyu2_test.csv']).decode("utf-8").split('\n') if len(row) > 0))
+    print('Data.py Line 25 nyu2_train',nyu2_train)
+    print('Data.py Line 26 nyu2_train',nyu2_test)
 
     shape_rgb = (batch_size, 480, 640, 3)
     shape_depth = (batch_size, 240, 320, 1)
