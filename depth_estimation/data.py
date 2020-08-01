@@ -38,6 +38,7 @@ def get_nyu_train_test_data(batch_size):
     data, nyu2_train, nyu2_test, shape_rgb, shape_depth = get_nyu_data(batch_size)
 
     train_generator = NYU_BasicAugmentRGBSequence(data, nyu2_train, batch_size=batch_size, shape_rgb=shape_rgb, shape_depth=shape_depth)
+    print('Train Generator Done')
     test_generator = NYU_BasicRGBSequence(data, nyu2_test, batch_size=batch_size, shape_rgb=shape_rgb, shape_depth=shape_depth)
 
     return train_generator, test_generator
