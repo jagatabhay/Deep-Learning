@@ -78,8 +78,8 @@ class NYU_BasicAugmentRGBSequence(Sequence):
             y = np.clip(np.asarray(Image.open( BytesIO(self.data[sample[1]]) )).reshape(224,224,3)/255*self.maxDepth,0,self.maxDepth)
             y = DepthNorm(y, maxDepth=self.maxDepth)
 
-            batch_x[i] = nyu_resize(x, 480)
-            batch_y[i] = nyu_resize(y, 240)
+            #batch_x[i] = nyu_resize(x, 480)
+            #batch_y[i] = nyu_resize(y, 240)
 
             if is_apply_policy: batch_x[i], batch_y[i] = self.policy(batch_x[i], batch_y[i])
 
