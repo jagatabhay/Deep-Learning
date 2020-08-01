@@ -20,8 +20,8 @@ def get_nyu_data(batch_size, nyu_data_zipfile='nyu_data.zip'):
     data = extract_zip(nyu_data_zipfile)
     print('Data.py Line 21 ', data)
 
-    nyu2_train = list((row.split(',') for row in (data['data/nyu2_train.csv']).decode("utf-8").split('\n') if len(row) > 0))
-    nyu2_test = list((row.split(',') for row in (data['data/nyu2_test.csv']).decode("utf-8").split('\n') if len(row) > 0))
+    nyu2_train = list((row.strip().split(',') for row in (data['data/nyu2_train.csv']).decode("utf-8").strip().split('\n') if len(row) > 0))
+    nyu2_test = list((row.strip().split(',') for row in (data['data/nyu2_test.csv']).decode("utf-8").strip().split('\n') if len(row) > 0))
     print('Data.py Line 25 nyu2_train',nyu2_train)
     print('Data.py Line 26 nyu2_train',nyu2_test)
 
