@@ -8,7 +8,7 @@ from augment import BasicPolicy
 
 def extract_zip(input_zip):
     input_zip=ZipFile(input_zip)
-    for file in input_zip():
+    for file in input_zip.namelist():
         print('Namelist: ',file)
     return {name: input_zip.read(name) for name in input_zip.namelist()}
 
