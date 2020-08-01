@@ -88,6 +88,8 @@ print('\n\n\n', 'Compiling model..', runID, '\n\n\tGPU ' + (str(args.gpus)+' gpu
 model.compile(loss=depth_loss_function, optimizer=optimizer)
 
 print('Ready for training!\n')
+print('Train Generator : ',train_generator)
+print('Test Generator : ',test_generator)
 
 # Callbacks
 #callbacks = []
