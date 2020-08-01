@@ -104,6 +104,7 @@ class NYU_BasicRGBSequence(Sequence):
 
     def __getitem__(self, idx):
         batch_x, batch_y = np.zeros( self.shape_rgb ), np.zeros( self.shape_depth )
+        print('I was called')
         for i in range(self.batch_size):            
             index = min((idx * self.batch_size) + i, self.N-1)
 
