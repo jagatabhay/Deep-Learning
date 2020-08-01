@@ -25,7 +25,7 @@ def get_nyu_data(batch_size, nyu_data_zipfile='nyu_data.zip'):
     print('Data.py Line 26 nyu2_train',nyu2_test)
 
     shape_rgb = (batch_size, 480, 640, 3)
-    shape_depth = (batch_size, 240, 320, 1)
+    shape_depth = (batch_size, 240, 320, 3)
 
     # Helpful for testing...
     if False:
