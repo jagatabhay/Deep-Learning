@@ -8,8 +8,6 @@ from augment import BasicPolicy
 
 def extract_zip(input_zip):
     input_zip=ZipFile(input_zip)
-    for file in input_zip.namelist():
-        print('Namelist: ',file)
     return {name: input_zip.read(name) for name in input_zip.namelist()}
 
 def nyu_resize(img, resolution=480, padding=6):
@@ -25,7 +23,7 @@ def get_nyu_data(batch_size, nyu_data_zipfile='nyu_data.zip'):
     print('Data.py Line 26 nyu2_train',nyu2_test)
 
     shape_rgb = (batch_size, 480, 640, 3)
-    shape_depth = (batch_size, 240, 320, 3)
+    shape_depth = (batch_size, 240, 320, 1)
 
     # Helpful for testing...
     if False:
@@ -75,7 +73,7 @@ class NYU_BasicAugmentRGBSequence(Sequence):
             sample = self.dataset[index]
 
             x = np.clip(np.asarray(Image.open( BytesIO(self.data[sample[0]]) )).reshape(224,224,3)/255,0,1)
-            y = np.clip(np.asarray(Image.open( BytesIO(self.data[sample[1]]) )).reshape(224,224,3)/255*self.maxDepth,0,self.maxDepth)
+            y = np.clip(np.asarray(Image.open( BytesIO(self.data[sample[1]]) )).reshape(224,224,1)/255*self.maxDepth,0,self.maxDepth)
             y = DepthNorm(y, maxDepth=self.maxDepth)
 
             batch_x[i] = nyu_resize(x, 480)
@@ -111,7 +109,7 @@ class NYU_BasicRGBSequence(Sequence):
             sample = self.dataset[index]
 
             x = np.clip(np.asarray(Image.open( BytesIO(self.data[sample[0]]))).reshape(480,640,3)/255,0,1)
-            y = np.asarray(Image.open(BytesIO(self.data[sample[1]])), dtype=np.float32).reshape(480,640,3).copy().astype(float) / 10.0
+            y = np.asarray(Image.open(BytesIO(self.data[sample[1]])), dtype=np.float32).reshape(480,640,1).copy().astype(float) / 10.0
             y = DepthNorm(y, maxDepth=self.maxDepth)
 
             batch_x[i] = nyu_resize(x, 480)
