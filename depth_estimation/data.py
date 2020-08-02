@@ -63,7 +63,7 @@ class NYU_BasicAugmentRGBSequence(Sequence):
         return int(np.ceil(self.N / float(self.batch_size)))
 
     def __getitem__(self, idx, is_apply_policy=True):
-        print('IDX:',idx)
+        #print('IDX:',idx)
         batch_x, batch_y = np.zeros( self.shape_rgb ), np.zeros( self.shape_depth )
 
         # Augmentation of RGB images
@@ -102,7 +102,7 @@ class NYU_BasicRGBSequence(Sequence):
 
     def __getitem__(self, idx):
         batch_x, batch_y = np.zeros( self.shape_rgb ), np.zeros( self.shape_depth )
-        print('I was called')
+        #print('I was called')
         for i in range(self.batch_size):            
             index = min((idx * self.batch_size) + i, self.N-1)
 
